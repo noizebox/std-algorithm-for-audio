@@ -4,7 +4,7 @@ project(algorithm_perf)
 set(BUFFER_SIZE 64 CACHE STRING "Audio buffer size (samples)")
 
 set(SOURCE_FILES algorithms.cpp
-			     main.cpp)
+                 main.cpp)
 
 # Enumerate headers too, mostly for CLion convenience
 set(HEADER_FILES algorithms.h)

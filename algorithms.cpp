@@ -66,6 +66,8 @@ int clip_detect_optimised(const AudioBuffer& buffer)
     for (auto& sample : buffer)
     {
         clipcount += (std::abs(sample) > 1.0f);
+        // You can also use the custom abs(), they are more or less the same,
+        // performance wise on all systems I've tried.
         //clipcount += (float_abs(sample) > 1.0f);
     }
     return clipcount > 1;
