@@ -23,3 +23,9 @@ void clamp_alg(AudioBuffer& buffer);
 void clamp_alg_direct_access(AudioBuffer& buffer);
 
 void custom_clamp(AudioBuffer& buffer);
+
+void alg_fill(AudioBuffer& buffer, float value);
+
+void memset_fill(AudioBuffer& buffer, int value);
+
+void custom_fill(AudioBuffer& buffer, float value);

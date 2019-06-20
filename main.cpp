@@ -14,6 +14,9 @@ enum TEST_MODE
     STD_CLAMP,
     STD_CLAMP_DIR_ACCESS,
     CUSTOM_CLAMP,
+    STD_FILL,
+    MEMSET_FILL,
+    CUSTOM_FILL,
     MAX_MODES  
 };
 
@@ -29,6 +32,9 @@ void print_results(const std::vector<int>& results)
     std::cout << "std::clamp:\t\t\t"             << results[STD_CLAMP] << "\tns" << std::endl;
     std::cout << "std::clamp(direct_access):\t"  << results[STD_CLAMP_DIR_ACCESS] << "\tns" << std::endl;
     std::cout << "Custom clamp:\t\t\t"           << results[CUSTOM_CLAMP] << "\tns" << std::endl;
+    std::cout << "std::fill:\t\t\t"              << results[STD_FILL] << "\tns" << std::endl;
+    std::cout << "memset fill:\t\t\t"                 << results[MEMSET_FILL] << "\tns" << std::endl;
+    std::cout << "Custom fill:\t\t\t"            << results[CUSTOM_FILL] << "\tns" << std::endl;
 }
 
 float float_rand(float min, float max)
@@ -48,6 +54,7 @@ void fill_buffer(AudioBuffer& buffer, float peak_value)
 
 void run_test(float clip_ratio)
 {
+    float fill_value = 0;
     std::vector<int> results;
     std::array<AudioBuffer, SUB_ITERATIONS> buffers;
     volatile int count = 0;
@@ -65,7 +72,7 @@ void run_test(float clip_ratio)
             auto start_time = std::chrono::high_resolution_clock::now();
             for (auto& buffer : buffers)
             {
-                switch(mode)
+                switch (mode)
                 {
                     case STD_MINMAX:
                     {
@@ -101,6 +108,22 @@ void run_test(float clip_ratio)
                     {
                         custom_clamp(buffer);
                         break;
+                    }
+                    case STD_FILL:
+                    {
+                        alg_fill(buffer, fill_value);
+                        break;
+                    }
+                    case MEMSET_FILL:
+                    {
+                        memset_fill(buffer, fill_value);
+                        break;
+                    }
+                    case CUSTOM_FILL:
+                    {
+                        custom_fill(buffer, fill_value);
+                        break;
+
                     }
                 }
             }

@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <limits>
+#include <cstring>
 
 #include "algorithms.h"
 
@@ -94,5 +95,23 @@ void custom_clamp(AudioBuffer& buffer)
     for (auto& sample : buffer)
     {
         sample = float_clamp(sample, -1.0f, 1.0f);
+    }
+}
+
+void alg_fill(AudioBuffer& buffer, float value)
+{
+    std::fill(buffer.begin(), buffer.end(), value);
+}
+
+void memset_fill(AudioBuffer& buffer, int value)
+{
+    memset(&buffer[0], value, buffer.size() * sizeof(float));
+}
+
+void custom_fill(AudioBuffer& buffer, float value)
+{
+    for (auto& a : buffer)
+    {
+        a = value;
     }
 }
