@@ -105,7 +105,7 @@ void alg_fill(AudioBuffer& buffer, float value)
 
 void memset_fill(AudioBuffer& buffer, int value)
 {
-    memset(&buffer[0], value, buffer.size() * sizeof(float));
+    memset(buffer.data(), value, buffer.size() * sizeof(float));
 }
 
 void custom_fill(AudioBuffer& buffer, float value)
@@ -113,5 +113,23 @@ void custom_fill(AudioBuffer& buffer, float value)
     for (auto& a : buffer)
     {
         a = value;
+    }
+}
+
+void alg_copy(const AudioBuffer& source, AudioBuffer& dest)
+{
+    std::copy(source.begin(), source.end(), dest.begin());
+}
+
+void memcpy_copy(const AudioBuffer& source, AudioBuffer& dest)
+{
+    memcpy(dest.data(), source.data(), source.size() * sizeof(float));
+}
+
+void custom_copy(const AudioBuffer& source, AudioBuffer& dest)
+{
+    for (unsigned int i = 0; i < source.size(); ++i)
+    {
+        dest[i] = source[i];
     }
 }

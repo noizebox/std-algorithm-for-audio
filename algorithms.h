@@ -29,3 +29,9 @@ void alg_fill(AudioBuffer& buffer, float value);
 void memset_fill(AudioBuffer& buffer, int value);
 
 void custom_fill(AudioBuffer& buffer, float value);
+
+void alg_copy(const AudioBuffer& source, AudioBuffer& dest);
+
+void memcpy_copy(const AudioBuffer& source, AudioBuffer& dest);
+
+void custom_copy(const AudioBuffer& source, AudioBuffer& dest);
