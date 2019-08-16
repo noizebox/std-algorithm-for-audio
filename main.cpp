@@ -38,9 +38,9 @@ void print_results(const std::vector<int>& results)
     std::cout << "std::fill:\t\t\t"              << results[STD_FILL] << "\tns" << std::endl;
     std::cout << "memset fill:\t\t\t"            << results[MEMSET_FILL] << "\tns" << std::endl;
     std::cout << "Custom fill:\t\t\t"            << results[CUSTOM_FILL] << "\tns" << std::endl;
-    std::cout << "std::copy:\t\t\t"              << results[STD_FILL] << "\tns" << std::endl;
-    std::cout << "memcpy copy:\t\t\t"            << results[MEMSET_FILL] << "\tns" << std::endl;
-    std::cout << "Custom copy:\t\t\t"            << results[CUSTOM_FILL] << "\tns" << std::endl;
+    std::cout << "std::copy:\t\t\t"              << results[STD_COPY] << "\tns" << std::endl;
+    std::cout << "memcpy copy:\t\t\t"            << results[MEMCPY_COPY] << "\tns" << std::endl;
+    std::cout << "Custom copy:\t\t\t"            << results[CUSTOM_COPY] << "\tns" << std::endl;
 }
 
 float float_rand(float min, float max)
